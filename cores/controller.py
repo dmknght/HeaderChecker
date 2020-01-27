@@ -23,6 +23,9 @@ def run(url):
             checker.init_target(url, response.headers)
             checker.analysis()
 
+    except KeyboardInterrupt:
+        events.error("Stopped by user", "Interrupted")
+
     except Exception as error:
-        # TODO handle color here
-        print(error)
+        events.error(error)
+        raise RuntimeError("Error while running program")
