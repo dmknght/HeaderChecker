@@ -28,11 +28,13 @@ class CoreModule(object):
         status = False
         for suggest in self.suggestions:
             if suggest == self.data[self.name]:
+                # TODO use regex match instead
                 status = True
                 break
-        if status == False:
-            pass
-            # TODO improve warning, error or warn with this
+        if not status:
+            # give the last suggestion as best suggestion
+            events.data_warn(self.name, self.data[self.name], self.suggestion[-1])
+            # TODO improve warning, error for wrong value or warn for unnknow value
 
     def analysis(self):
         if self.alert_missing_protocol:
