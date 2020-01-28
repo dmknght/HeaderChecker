@@ -33,13 +33,14 @@ class CoreModule(object):
                 break
         if not status:
             # give the last suggestion as best suggestion
-            events.data_warn(self.name, self.data[self.name], self.suggestion[-1])
+            events.data_warn(self.name, self.data[self.name], self.suggestions[-1])
             # TODO improve warning, error for wrong value or warn for unnknow value
 
     def analysis(self):
         if self.alert_missing_protocol:
             if self.url.split("://")[0] in self.alert_missing_protocol:
-                events.data_error("{} is missing".format(self.name))
-                # No value to check. We don't have to validate values
-                return True
+                if self.name not in self.data.keys():
+                    events.data_error("{} is missing".format(self.name))
+                    # No value to check. We don't have to validate values
+                    return True
         self.check_values()
