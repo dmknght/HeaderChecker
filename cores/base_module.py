@@ -15,6 +15,8 @@ class CoreModule(object):
         self.name = "Base Module name"
         self.url = ""
         self.data = ""
+        self.vulnerability = "Vulnerability name"
+        self.vuln_id = "CWE | OWASP ID"
         self.suggestions = []
         self.description = ""
         self.reference = ""

@@ -5,6 +5,8 @@ class Action(base_module.CoreModule):
     def __init__(self):
         self.name = "X-Frame-Options"
         self.description = "Avoid Clickjacking attack by ensuring that their content is not embedded into other sites"
+        self.vulnerability = "Clickjacking"
+        self.vuln_id = "CWE-451"
         self.suggestions = [
             "deny",  # Block all frame
             "sameorigin",

@@ -5,6 +5,8 @@ class Action(base_module.CoreModule):
     def __init__(self):
         self.name = "X-XSS-Protection"
         self.description = "Enable XSS filter in client's browser"
+        self.vulnerability = "Cross-site scripting (XSS)"
+        self.vuln_id = "CWE 79"
         self.suggestions = [
             "1",
             "1; mode=block",
