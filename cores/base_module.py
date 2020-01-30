@@ -43,4 +43,5 @@ class CoreModule(object):
                     events.data_error("{} is missing".format(self.name))
                     # No value to check. We don't have to validate values
                     return True
-        self.check_values()
+        if self.suggestions:
+            self.check_values()
